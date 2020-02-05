@@ -20,16 +20,14 @@ public class JumpingOnTheClouds {
         if(clouds[clouds.length - 1] == 1){
             throw new IOException("Final number of the array is 1");
         }
-        for(int i = 0; i < clouds.length; i++){
-            if(clouds[i] == 1 && clouds[i + 1] == 1){
-                throw new IOException("Two 1's in a row can't be completed");
-            }
-        }
 
 
 
         int numberOfJumps = 0;
         for (int i = 0; i < clouds.length - 1; i++) {
+            if(clouds[i + 1] == 1 && clouds[i + 2] == 1){
+                throw new IOException("Two 1's in a row can't be completed");
+            }
             if (i + 2 != clouds.length) {
                 if (clouds[i + 2] != 1) {
                     i++;
