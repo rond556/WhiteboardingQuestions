@@ -53,4 +53,33 @@ public class TwoDArrayDSTest {
         Integer actual = twoDArrayDS.findTheHourGlassSums(example);
         //Then
     }
+
+    @Test (expected = IOException.class)
+    public void array_wrong_height() throws IOException {
+        //Given
+        Integer[][] example = {{-9,-9,-9,9,9,9},
+                {-9,-3,6,7,-4,0},
+                {2,3,5,7,0,1},
+                {5,9,6,-10,4,1},
+                {-2,-4,-9,2,5,3}};
+        //When
+        Integer expected = 34;
+        Integer actual = twoDArrayDS.findTheHourGlassSums(example);
+        //Then
+    }
+
+    @Test (expected = IOException.class)
+    public void array_wrong_width() throws IOException {
+        //Given
+        Integer[][] example = {{-9,-9,-9,9,9},
+                {-9,-3,6,7,-4},
+                {2,3,5,7,0},
+                {5,9,6,-10,4},
+                {-2,-4,-9,2,5},
+                {-1,-4,4,2,4}};
+        //When
+        Integer expected = 34;
+        Integer actual = twoDArrayDS.findTheHourGlassSums(example);
+        //Then
+    }
 }

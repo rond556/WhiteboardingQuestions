@@ -30,6 +30,9 @@ arr: an array of integers
     */
 
     public Integer findTheHourGlassSums(Integer[][] sixBySixArray) throws IOException {
+        if(sixBySixArray.length != 6){
+            throw new IOException("Array is the wrong size");
+        }
         Integer largestSum = -63;
         for(int i = 1; i <= 4; i++){
             for(int j = 1; j <= 4; j++){
