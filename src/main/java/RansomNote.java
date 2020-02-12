@@ -15,22 +15,37 @@ public class RansomNote {
      */
 
     public Boolean matchTheNotWithMagazineClip(String[] magazine, String[] note){
+        if (testArrays(magazine, note))
+            return false;
+        HashMap<String, Integer> magazineCounter = new HashMap<>();
+        HashMap<String, Integer> noteCounter = new HashMap<>();
+
+        fillMagazineMap(magazine, magazineCounter);
+        fillNoteMap(note, magazineCounter, noteCounter);
+
+        return returnBoolean(note, magazineCounter, noteCounter);
+    }
+
+    private boolean testArrays(String[] magazine, String[] note) {
         if(note.length == 0 || magazine.length == 0){
             throw new NullPointerException("String arrays are empty");
         }
         if(note.length > magazine.length){
-            return false;
+            return true;
         }
-        HashMap<String, Integer> magazineCounter = new HashMap<>();
-        HashMap<String, Integer> noteCounter = new HashMap<>();
+        return false;
+    }
 
-        for(String s :magazine){
-            if(!magazineCounter.containsKey(s)){
-                magazineCounter.put(s,1);
-            } else {
-                magazineCounter.put(s,magazineCounter.get(s) + 1);
+    private Boolean returnBoolean(String[] note, HashMap<String, Integer> magazineCounter, HashMap<String, Integer> noteCounter) {
+        for(String s : note){
+            if(!magazineCounter.get(s).equals(noteCounter.get(s))){
+                return false;
             }
         }
+        return true;
+    }
+
+    private void fillNoteMap(String[] note, HashMap<String, Integer> magazineCounter, HashMap<String, Integer> noteCounter) {
         for(String s : note){
             if(!noteCounter.containsKey(s)){
                 noteCounter.put(s,1);
@@ -41,14 +56,15 @@ public class RansomNote {
                 magazineCounter.put(s,0);
             }
         }
+    }
 
-        for(String s : note){
-            if(!magazineCounter.get(s).equals(noteCounter.get(s))){
-                return false;
+    private void fillMagazineMap(String[] magazine, HashMap<String, Integer> magazineCounter) {
+        for(String s :magazine){
+            if(!magazineCounter.containsKey(s)){
+                magazineCounter.put(s,1);
+            } else {
+                magazineCounter.put(s,magazineCounter.get(s) + 1);
             }
         }
-
-
-        return true;
     }
 }
