@@ -23,4 +23,22 @@ public class RansomNoteTest {
         //then
         assertFalse(ransomNote.matchTheNotWithMagazineClip(exampleMagazine,exampleNote));
     }
+
+    @Test
+    public void case_sensitive() {
+        //Given
+        String[] exampleMagazine = {"This"};
+        String[] exampleNote = {"this"};
+        //then
+        assertFalse(ransomNote.matchTheNotWithMagazineClip(exampleMagazine,exampleNote));
+    }
+
+    @Test
+    public void note_longer_than_magazine() {
+        //Given
+        String[] exampleMagazine = {"This"};
+        String[] exampleNote = {"this", "is","longer"};
+        //then
+        assertFalse(ransomNote.matchTheNotWithMagazineClip(exampleMagazine,exampleNote));
+    }
 }
