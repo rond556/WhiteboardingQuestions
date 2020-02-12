@@ -41,4 +41,13 @@ public class RansomNoteTest {
         //then
         assertFalse(ransomNote.matchTheNotWithMagazineClip(exampleMagazine,exampleNote));
     }
+
+    @Test (expected = NullPointerException.class)
+    public void empty_arrays() {
+        //Given
+        String[] exampleMagazine = {};
+        String[] exampleNote = {};
+        //then
+        assertTrue(ransomNote.matchTheNotWithMagazineClip(exampleMagazine,exampleNote));
+    }
 }

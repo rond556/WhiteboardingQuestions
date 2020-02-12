@@ -15,6 +15,9 @@ public class RansomNote {
      */
 
     public Boolean matchTheNotWithMagazineClip(String[] magazine, String[] note){
+        if(note.length == 0 || magazine.length == 0){
+            throw new NullPointerException("String arrays are empty");
+        }
         if(note.length > magazine.length){
             return false;
         }
