@@ -36,16 +36,17 @@ public class FireAndFury {
                         }
                         break;
                     }
-                } else if (j == fireFury.size()){
+                } else {
                     if (current.equals("FIRE")) {
                         sb.append(appendFire(counter));
-                        current = "FURY";
                     } else if (current.equals("FURY")) {
                         sb.append(appendFury(counter));
-                        current = "FIRE";
                     }
                     break;
                 }
+            }
+            if(!fireFury.contains("FIRE") || !fireFury.contains("FURY")){
+                break;
             }
         }
         return sb.toString().trim();
